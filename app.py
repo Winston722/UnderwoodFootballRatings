@@ -20,7 +20,6 @@ worster = pd.read_csv(Path(__file__).parent / "worster.csv")
 fbs = pd.read_csv(Path(__file__).parent / "FBS.csv")
 graph_data = pd.read_csv(Path(__file__).parent / "graph_data.csv")
 
-graph_data = get_graph_data(2022, hyperparameters = hyperparameters)
 y_max = (graph_data.groupby(['team','hypothetical rating']).sum()).reset_index().groupby(['team'])['error'].mean().reset_index()['error'].max() #determines where the max should be set for the plot
 
 options_teams = fbs.sort_values(by = 'team')['team'].tolist()
