@@ -18,12 +18,7 @@ from htmltools import css, div
 ratings = pd.read_csv(Path(__file__).parent / "underwood.csv")
 worster = pd.read_csv(Path(__file__).parent / "worster.csv")
 fbs = pd.read_csv(Path(__file__).parent / "FBS.csv")
-
-hyperparameters = {
-    'home_adv': 2.8498763422370907
-    , 'decay_rate': 0.0003998040916498869
-}
-
+graph_data = pd.read_csv(Path(__file__).parent / "graph_data.csv")
 
 graph_data = get_graph_data(2022, hyperparameters = hyperparameters)
 y_max = (graph_data.groupby(['team','hypothetical rating']).sum()).reset_index().groupby(['team'])['error'].mean().reset_index()['error'].max() #determines where the max should be set for the plot
